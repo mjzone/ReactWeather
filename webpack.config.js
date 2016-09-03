@@ -21,16 +21,12 @@ module.exports = {
     },
     resolve: {
         root: __dirname,
-        alias: {
-            Main: 'app/components/Main.jsx',
-            Nav: 'app/components/Nav.jsx',
-            Weather: 'app/components/Weather.jsx',
-            About: 'app/components/About.jsx',
-            Examples: 'app/components/Examples.jsx',
-            WeatherForm: 'app/components/WeatherForm.jsx',
-            WeatherMsg: 'app/components/WeatherMsg.jsx',
-            WeatherService: 'app/api/WeatherService.jsx'
-        },
+        modulesDirectories:[
+            'node_modules',
+            './app/api',
+            './app/components'
+        ],
+        alias: {},
         extensions: ['', '.js', '.jsx']
     },
     module: {
