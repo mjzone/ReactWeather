@@ -8,8 +8,8 @@ var Nav = React.createClass({
     },
     render: function(){
         return (
-                  <div className="tob-bar">
-                      <div className="tob-bar-left">
+                  <div className="top-bar">
+                      <div className="top-bar-left">
                           <ul className="menu">
                               <li className="menu-text">Weather App</li>
                               <li>
@@ -23,7 +23,7 @@ var Nav = React.createClass({
                               </li>
                           </ul>
                       </div>
-                      <div className="tob-bar-right">
+                      <div className="top-bar-right">
                           <form onSubmit={this.onSearch}>
                               <ul className="menu">
                                   <li>
