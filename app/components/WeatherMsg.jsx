@@ -12,7 +12,7 @@ var React = require('react');
 var WeatherMsg = ({cityName, temp}) => { // destructuing on the fly.
     return (
         <div>
-            <span>It is {temp} in {cityName}</span>
+            <h3 className="text-center">It is {temp} in {cityName}</h3>
         </div>
     )
 }
