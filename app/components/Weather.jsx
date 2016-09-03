@@ -8,9 +8,23 @@ var Weather = React.createClass({
     getInitialState: function() {
         return {isLoading: false}
     },
+    componentDidMount: function() {
+        var location = this.props.location.query.location;
+        if (location && location.length > 0) {
+            this.handleSearch(location);
+            window.location.hash = '#/';
+        }
+    },
+    componentWillReceiveProps: function(newProps){
+        var location = newProps.location.query.location;
+        if (location && location.length > 0) {
+            this.handleSearch(location);
+            window.location.hash = '#/';
+        }
+    },
     handleSearch: function(name) {
         var self = this;
-        self.setState({isLoading: true, errorMessage: undefined});
+        self.setState({isLoading: true, errorMessage: undefined, cityName: undefined, temp: undefined});
         WeatherService.getTemp(name).then(function(res) {
             self.setState({cityName: name, temp: res, isLoading: false});
         }, function(e) {
@@ -30,17 +44,14 @@ var Weather = React.createClass({
 
         function renderError() {
             if (typeof errorMessage === 'string') {
-                return (
-                    <ErrorModal title='Oops..' message={errorMessage}/>
-                )
+                return (<ErrorModal title='Oops..' message={errorMessage}/>)
             }
         };
 
         return (
             <div>
                 <h1 className="text-center page-title">Get Weather</h1>
-                <WeatherForm onSearch={this.handleSearch}/>
-                {renderMessage()}
+                <WeatherForm onSearch={this.handleSearch}/> {renderMessage()}
                 {renderError()}
             </div>
         );
